@@ -1,0 +1,33 @@
+# k8s_containrd_pkg.yml
+- hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+
+  - name: K0s用の公開鍵をVMにコピー
+    ansible.builtin.copy:
+      src: ./upload/
+      dest: /root/upload/
+      backup: yes
+
+  - name: root userのsshにvagrantの鍵を追加
+    shell: |
+      cat /home/vagrant/.ssh/authorized_keys >> /root/.ssh/authorized_keys
+    args:
+      chdir: /
+
+  - name: K0s用の公開鍵を追加
+    shell: |
+      cat /root/upload/k8s-key.pub >> /root/.ssh/authorized_keys
+    args:
+      chdir: /
+
+  - name: Installing net-tools
+    apt:
+      name:
+      - net-tools
+      state: present
