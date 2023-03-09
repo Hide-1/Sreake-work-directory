@@ -5,6 +5,7 @@ name = "3shake"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
+  config.vm.synced_folder ".", "/vagrant"
   # config.vm.boot_timeout = 600
 
   # config.vm.define "__NODE_TYPE__-__NUMBER__" do |cf|
