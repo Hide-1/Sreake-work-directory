@@ -5,10 +5,31 @@ name = "3shake"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
+  # config.vm.boot_timeout = 600
 
-  config.vm.define "master" do |cf|
-    cf.vm.hostname = name + "-k8s-master"
+  # config.vm.define "__NODE_TYPE__-__NUMBER__" do |cf|
+  #   cf.vm.hostname = name + "-k8s-__NODE_TYPE__-__NUMBER__"
+  #   cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "__IP_ADDRESS__"
+  #   cf.vm.provider "virtualbox" do |vb|
+  #     vb.name   = cf.vm.hostname
+  #     vb.cpus   = 1
+  #     vb.memory = 4096
+  #   end
+  # end
+
+  config.vm.define "master-001" do |cf|
+    cf.vm.hostname = name + "-k8s-master-001"
     cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.60"
+    cf.vm.provider "virtualbox" do |vb|
+      vb.name   = cf.vm.hostname
+      vb.cpus   = 2
+      vb.memory = 4096
+    end
+  end
+
+  config.vm.define "master-002" do |cf|
+    cf.vm.hostname = name + "-k8s-master-002"
+    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.61"
     cf.vm.provider "virtualbox" do |vb|
       vb.name   = cf.vm.hostname
       vb.cpus   = 2
@@ -18,7 +39,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "node-001" do |cf|
     cf.vm.hostname = name + "-k8s-node-001"
-    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.61"
+    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.62"
     cf.vm.provider "virtualbox" do |vb|
       vb.name   = cf.vm.hostname
       vb.cpus   = 2
@@ -28,7 +49,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "node-002" do |cf|
     cf.vm.hostname = name + "-k8s-node-002"
-    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.62"
+    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.63"
     cf.vm.provider "virtualbox" do |vb|
       vb.name   = cf.vm.hostname
       vb.cpus   = 2
@@ -38,7 +59,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "node-003" do |cf|
     cf.vm.hostname = name + "-k8s-node-003"
-    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.63"
+    cf.vm.network :public_network, :bridge => "Realtek PCIe 2.5GbE Family Controller", ip: "192.168.50.64"
     cf.vm.provider "virtualbox" do |vb|
       vb.name   = cf.vm.hostname
       vb.cpus   = 2
