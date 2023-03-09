@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dead-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ubuntu
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - name: ubuntu
+        image: ubuntu:20.04
+        command: ["bash", "-c" , sleep 15]
