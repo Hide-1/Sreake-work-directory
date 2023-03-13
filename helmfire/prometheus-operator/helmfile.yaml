@@ -1,0 +1,9 @@
+# helmfile apply --skip-diff-on-install
+repositories:
+ - name: prometheus-community
+   url: https://prometheus-community.github.io/helm-charts
+
+releases:
+  - name: prometheus
+    namespace: monitor
+    chart: prometheus-community/kube-prometheus-stack
