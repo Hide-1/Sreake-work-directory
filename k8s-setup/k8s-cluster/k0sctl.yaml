@@ -12,14 +12,14 @@ spec:
     role: controller
     privateAddress: 192.168.50.60
     privateInterface: enp0s8
-  - ssh:
-      address: 192.168.50.61
-      user: root
-      port: 22
-      keyPath: ./k8s-key
-    role: controller
-    privateAddress: 192.168.50.61
-    privateInterface: enp0s8
+  # - ssh:
+  #     address: 192.168.50.61
+  #     user: root
+  #     port: 22
+  #     keyPath: ./k8s-key
+  #   role: controller
+  #   privateAddress: 192.168.50.61
+  #   privateInterface: enp0s8
   - ssh:
       address: 192.168.50.62
       user: root
@@ -36,14 +36,14 @@ spec:
     role: worker
     privateAddress: 192.168.50.63
     privateInterface: enp0s8
-  - ssh:
-      address: 192.168.50.64
-      user: root
-      port: 22
-      keyPath: ./k8s-key
-    role: worker
-    privateAddress: 192.168.50.64
-    privateInterface: enp0s8
+  # - ssh:
+  #     address: 192.168.50.64
+  #     user: root
+  #     port: 22
+  #     keyPath: ./k8s-key
+  #   role: worker
+  #   privateAddress: 192.168.50.64
+  #   privateInterface: enp0s8
   k0s:
     version: 1.26.2+k0s.0
     dynamicConfig: false

@@ -1,1 +1,1 @@
-- helm install prometheus prometheus-community/kube-prometheus-stack
+helm install prometheus prometheus-community/kube-prometheus-stack
